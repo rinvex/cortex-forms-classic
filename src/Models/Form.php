@@ -24,8 +24,8 @@ use Silber\Bouncer\Database\HasRolesAndAbilities;
  * @property array                                                                           $content
  * @property array                                                                           $actions
  * @property array                                                                           $submission
- * @property boolean                                                                         $is_active
- * @property boolean                                                                         $is_public
+ * @property bool                                                                         $is_active
+ * @property bool                                                                         $is_public
  * @property \Carbon\Carbon|null                                                             $created_at
  * @property \Carbon\Carbon|null                                                             $updated_at
  * @property \Carbon\Carbon|null                                                             $deleted_at

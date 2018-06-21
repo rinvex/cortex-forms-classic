@@ -70,7 +70,7 @@ class FormFormRequest extends FormRequest
         $this->replace($this->escape($this->all()));
 
         $validator->after(function ($validator) {
-            collect(['content', 'submission', 'actions'])->each(function($item) use ($validator) {
+            collect(['content', 'submission', 'actions'])->each(function ($item) use ($validator) {
                 ! empty($this->get($item)) || $validator->errors()->add('actions', trans('cortex/forms::messages.missing_'.$item));
             });
         });
