@@ -18,7 +18,7 @@ use Rinvex\Forms\Models\FormResponse as BaseFormResponse;
  * @property int                                                                             $id
  * @property string                                                                          $unique_identifier
  * @property array                                                                           $content
- * @property integer                                                                         $form_id
+ * @property int                                                                         $form_id
  * @property int                                                                             $user_id
  * @property string                                                                          $user_type
  * @property \Carbon\Carbon|null                                                             $created_at
