@@ -10,8 +10,8 @@ use Cortex\Forms\Models\Form;
 use Illuminate\Foundation\Http\FormRequest;
 use Cortex\Foundation\DataTables\LogsDataTable;
 use Cortex\Foundation\Importers\DefaultImporter;
-use Cortex\Foundation\DataTables\ImportLogsDataTable;
 use Cortex\Forms\DataTables\Adminarea\FormsDataTable;
+use Cortex\Foundation\DataTables\ImportLogsDataTable;
 use Cortex\Foundation\Http\Requests\ImportFormRequest;
 use Cortex\Foundation\DataTables\ImportRecordsDataTable;
 use Cortex\Forms\Http\Requests\Adminarea\FormFormRequest;
@@ -42,7 +42,7 @@ class FormsController extends AuthorizedController
     /**
      * List form logs.
      *
-     * @param \Cortex\Forms\Models\Form             $form
+     * @param \Cortex\Forms\Models\Form                   $form
      * @param \Cortex\Foundation\DataTables\LogsDataTable $logsDataTable
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
@@ -76,7 +76,7 @@ class FormsController extends AuthorizedController
     /**
      * Import forms.
      *
-     * @param \Cortex\Forms\Models\Form                      $form
+     * @param \Cortex\Forms\Models\Form                            $form
      * @param \Cortex\Foundation\DataTables\ImportRecordsDataTable $importRecordsDataTable
      *
      * @return \Illuminate\View\View
@@ -202,7 +202,7 @@ class FormsController extends AuthorizedController
 
         $currentUser = $request->user($this->getGuard());
         $tags = app('rinvex.tags.tag')->pluck('name', 'id');
-        $embedCode = htmlentities('<div data-embed-src="' . route('frontarea.forms.embed', ['form' => $form]) . '"></div><script src="'.url(mix('js/embed.js', 'assets')).'" defer></script>', ENT_COMPAT, 'UTF-8');
+        $embedCode = htmlentities('<div data-embed-src="'.route('frontarea.forms.embed', ['form' => $form]).'"></div><script src="'.url(mix('js/embed.js', 'assets')).'" defer></script>', ENT_COMPAT, 'UTF-8');
 
         $roles = $currentUser->can('superadmin')
             ? app('cortex.auth.role')->all()->pluck('title', 'id')->toArray()
@@ -248,7 +248,7 @@ class FormsController extends AuthorizedController
      * Process stored/updated form.
      *
      * @param \Illuminate\Foundation\Http\FormRequest $request
-     * @param \Cortex\Forms\Models\Form         $form
+     * @param \Cortex\Forms\Models\Form               $form
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */

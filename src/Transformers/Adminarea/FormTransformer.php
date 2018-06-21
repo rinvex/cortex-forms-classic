@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Cortex\Forms\Transformers\Adminarea;
 
-use Rinvex\Support\Traits\Escaper;
 use Cortex\Forms\Models\Form;
+use Rinvex\Support\Traits\Escaper;
 use League\Fractal\TransformerAbstract;
 
 class FormTransformer extends TransformerAbstract
@@ -22,8 +22,8 @@ class FormTransformer extends TransformerAbstract
             'name' => (string) $form->name,
             'slug' => (string) $form->slug,
             'responses' => (int) $form->responses->count(),
-            'is_active' => (boolean) $form->is_active,
-            'is_public' => (boolean) $form->is_public,
+            'is_active' => (bool) $form->is_active,
+            'is_public' => (bool) $form->is_public,
             'created_at' => (string) $form->created_at,
             'updated_at' => (string) $form->updated_at,
         ]);
