@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-use Cortex\Forms\Models\FormResponse;
-use Rinvex\Menus\Models\MenuItem;
 use Cortex\Forms\Models\Form;
+use Rinvex\Menus\Models\MenuItem;
+use Cortex\Forms\Models\FormResponse;
 use Rinvex\Menus\Models\MenuGenerator;
 
 Menu::register('adminarea.sidebar', function (MenuGenerator $menu, Form $form) {
