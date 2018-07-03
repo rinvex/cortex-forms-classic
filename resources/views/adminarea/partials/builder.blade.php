@@ -1,7 +1,7 @@
 <script>
-    function inject_action_template(tempalte, reverseOrder = false) {
+    function inject_action_template(template, reverseOrder = false) {
         let uniqueId = Math.random().toString(36).slice(2);
-        let newActionTemplate = $('#'+tempalte).html().replace(/UNIQUEID/g, uniqueId);
+        let newActionTemplate = $('#'+template).html().replace(/UNIQUEID/g, uniqueId);
         $('#actions-container').find('.panel-collapse').collapse('hide');
         reverseOrder ? $('#actions-container').prepend(newActionTemplate) : $('#actions-container').append(newActionTemplate);
 
