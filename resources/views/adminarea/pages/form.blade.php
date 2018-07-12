@@ -6,12 +6,12 @@
     {{ extract_title(Breadcrumbs::render()) }}
 @endsection
 
-@push('vendor-scripts')
-    <script src="{{ mix('js/formbuilder.js', 'assets') }}" defer></script>
-@endpush
-
 @push('head-elements')
     <meta name="turbolinks-cache-control" content="no-cache">
+@endpush
+
+@push('vendor-scripts')
+    <script src="{{ mix('js/formbuilder.js', 'assets') }}" defer></script>
 @endpush
 
 @push('inline-scripts')
