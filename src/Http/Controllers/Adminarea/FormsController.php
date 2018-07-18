@@ -280,6 +280,8 @@ class FormsController extends AuthorizedController
      *
      * @param \Cortex\Forms\Models\Form $form
      *
+     * @throws \Exception
+     *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
     public function destroy(Form $form)

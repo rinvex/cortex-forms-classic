@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Cortex\Forms\Models\Form;
+use DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator;
 
 Breadcrumbs::register('frontarea.forms.index', function (BreadcrumbsGenerator $breadcrumbs) {
