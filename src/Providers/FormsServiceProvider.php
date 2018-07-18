@@ -129,7 +129,7 @@ class FormsServiceProvider extends ServiceProvider
             $bladeCompiler->directive('form', function ($slug = null) {
                 $slug = trim($slug, " \t\n\r\0\x0B'\"");
 
-                return $slug ? "<?php echo view('cortex/forms::frontarea.pages.embed-internal', ['form' => app('rinvex.forms.form')->where('slug', '$slug')->first()]); ?>"
+                return $slug ? "<?php echo view('cortex/forms::frontarea.pages.embed-internal', ['form' => app('rinvex.forms.form')->where('slug', '{$slug}')->first()]); ?>"
                     : trans('cortex/forms::message.invalid_form');
             });
         });
