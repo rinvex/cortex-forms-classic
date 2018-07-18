@@ -66,7 +66,6 @@ class FormsController extends AbstractController
                         'url' => $content,
                         'with' => ['success' => trans('cortex/forms::message.response_sent')],
                     ]);
-                    break;
 
                 default:
                 case 'show_message':
@@ -74,7 +73,6 @@ class FormsController extends AbstractController
                         'back' => true,
                         'with' => ['success' => $content],
                     ]);
-                    break;
             }
         } catch (Exception $exception) {
             logger($exception->getMessage().' - '.$exception->getTraceAsString());
@@ -87,7 +85,6 @@ class FormsController extends AbstractController
                         'url' => $content,
                         'with' => ['error' => trans('cortex/forms::message.response_exception')],
                     ]);
-                    break;
 
                 default:
                 case 'show_message':
@@ -95,7 +92,6 @@ class FormsController extends AbstractController
                         'back' => true,
                         'with' => ['error' => $content],
                     ]);
-                    break;
             }
         }
     }
