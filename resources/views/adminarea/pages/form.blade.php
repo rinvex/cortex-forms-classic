@@ -6,12 +6,12 @@
     {{ extract_title(Breadcrumbs::render()) }}
 @endsection
 
-@push('vendor-scripts')
-    <script src="{{ mix('js/formbuilder.js', 'assets') }}" defer></script>
-@endpush
-
 @push('head-elements')
     <meta name="turbolinks-cache-control" content="no-cache">
+@endpush
+
+@push('vendor-scripts')
+    <script src="{{ mix('js/formbuilder.js', 'assets') }}" defer></script>
 @endpush
 
 @push('inline-scripts')
@@ -71,9 +71,6 @@
                                         <div class="form-group">
                                             {{ Form::label("adminarea-forms-{$form->getRouteKey()}-embed-form", trans('cortex/forms::common.embed_form'), ['class' => 'control-label']) }}
                                             {{ Form::text('basics[embed_form]', $embedCode, ['class' => 'form-control', 'placeholder' => trans('cortex/forms::common.embed_form'), 'id' => "adminarea-forms-{$form->getRouteKey()}-embed-form", 'readonly' => 'readonly']) }}
-                                            {{--<pre><code id="adminarea-forms-{{ $form->getRouteKey() }}-embed-form">{!! $embedCode !!}</code> --}}
-                                                {{--<a href="#" onclick="event.preventDefault();" class="copy-button" data-clipboard-target="#embed-{{ $form->id }}"><i class="fa fa-clipboard"></i></a>--}}
-                                            {{--</pre>--}}
                                         </div>
 
                                     </div>
