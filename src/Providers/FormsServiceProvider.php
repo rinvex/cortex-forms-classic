@@ -97,6 +97,7 @@ class FormsServiceProvider extends ServiceProvider
      */
     protected function publishResources(): void
     {
+        $this->publishes([realpath(__DIR__.'/../../config/config.php') => config_path('cortex.forms.php')], 'cortex-forms-config');
         $this->publishes([realpath(__DIR__.'/../../database/migrations') => database_path('migrations')], 'cortex-forms-migrations');
         $this->publishes([realpath(__DIR__.'/../../resources/lang') => resource_path('lang/vendor/cortex/forms')], 'cortex-forms-lang');
         $this->publishes([realpath(__DIR__.'/../../resources/views') => resource_path('views/vendor/cortex/forms')], 'cortex-forms-views');
