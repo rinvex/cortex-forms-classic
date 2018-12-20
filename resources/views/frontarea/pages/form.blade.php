@@ -7,8 +7,8 @@
 @endsection
 
 @push('vendor-scripts')
-    <script src="{{ mix('js/formbuilder.js', 'assets') }}" defer></script>
-    <script src="{{ mix('js/embed.js', 'assets') }}" defer></script>
+    <script src="{{ mix('js/formbuilder.js') }}" defer></script>
+    <script src="{{ mix('js/embed.js') }}" defer></script>
 @endpush
 
 @push('inline-scripts')
