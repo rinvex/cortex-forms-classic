@@ -154,32 +154,6 @@ class FormsController extends AuthorizedController
     }
 
     /**
-     * Create new form.
-     *
-     * @param \Illuminate\Http\Request  $request
-     * @param \Cortex\Forms\Models\Form $form
-     *
-     * @return \Illuminate\View\View
-     */
-    public function create(Request $request, Form $form)
-    {
-        return $this->form($request, $form);
-    }
-
-    /**
-     * Edit given form.
-     *
-     * @param \Illuminate\Http\Request  $request
-     * @param \Cortex\Forms\Models\Form $form
-     *
-     * @return \Illuminate\View\View
-     */
-    public function edit(Request $request, Form $form)
-    {
-        return $this->form($request, $form);
-    }
-
-    /**
      * Show form create/edit form.
      *
      * @param \Illuminate\Http\Request  $request
