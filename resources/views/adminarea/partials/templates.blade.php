@@ -39,7 +39,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             {{ Form::label('actions[email][UNIQUEID][body]', trans('cortex/forms::common.email_body'), ['class' => 'control-label']) }}
-                            {{ Form::textarea('actions[email][UNIQUEID][body]', null, ['class' => 'form-control', 'placeholder' => trans('cortex/forms::common.email_body'), 'rows' => 5, 'required' => 'required']) }}
+                            {{ Form::textarea('actions[email][UNIQUEID][body]', null, ['class' => 'form-control tinymce', 'placeholder' => trans('cortex/forms::common.email_body'), 'rows' => 5, 'required' => 'required']) }}
                             <small class="text-muted">@lang('cortex/forms::common.body_desc')</small>
                         </div>
                     </div>
