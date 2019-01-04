@@ -24,9 +24,7 @@
 {{-- Main Content --}}
 @section('content')
 
-    @if($form->exists)
-        @include('cortex/foundation::common.partials.modal', ['id' => 'delete-confirmation'])
-    @endif
+    @includeWhen($form->exists, 'cortex/foundation::common.partials.modal', ['id' => 'delete-confirmation'])
 
     @include('cortex/foundation::common.partials.modal', ['id' => 'formbuilder-preview'])
 
