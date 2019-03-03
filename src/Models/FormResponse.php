@@ -18,7 +18,7 @@ use Rinvex\Forms\Models\FormResponse as BaseFormResponse;
  * @property int                                                                             $id
  * @property string                                                                          $unique_identifier
  * @property array                                                                           $content
- * @property int                                                                         $form_id
+ * @property int                                                                             $form_id
  * @property int                                                                             $user_id
  * @property string                                                                          $user_type
  * @property \Carbon\Carbon|null                                                             $created_at
@@ -26,7 +26,7 @@ use Rinvex\Forms\Models\FormResponse as BaseFormResponse;
  * @property \Carbon\Carbon|null                                                             $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent                              $user
  *
- * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Forms\Models\FormResponse ofUser(\Illuminate\Database\Eloquent\Model $owner)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Forms\Models\FormResponse ofUser(\Illuminate\Database\Eloquent\Model $user)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Forms\Models\FormResponse whereContent($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Forms\Models\FormResponse whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Forms\Models\FormResponse whereFormId($value)

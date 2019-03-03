@@ -13,18 +13,24 @@ class CortexFormsSeeder extends Seeder
      */
     public function run()
     {
-        Bouncer::allow('admin')->to('list', config('rinvex.forms.models.form'));
-        Bouncer::allow('admin')->to('import', config('rinvex.forms.models.form'));
-        Bouncer::allow('admin')->to('create', config('rinvex.forms.models.form'));
-        Bouncer::allow('admin')->to('update', config('rinvex.forms.models.form'));
-        Bouncer::allow('admin')->to('delete', config('rinvex.forms.models.form'));
-        Bouncer::allow('admin')->to('audit', config('rinvex.forms.models.form'));
+        $abilities = [
+            ['name' => 'list', 'title' => 'List forms', 'entity_type' => 'form'],
+            ['name' => 'import', 'title' => 'Import forms', 'entity_type' => 'form'],
+            ['name' => 'create', 'title' => 'Create forms', 'entity_type' => 'form'],
+            ['name' => 'update', 'title' => 'Update forms', 'entity_type' => 'form'],
+            ['name' => 'delete', 'title' => 'Delete forms', 'entity_type' => 'form'],
+            ['name' => 'audit', 'title' => 'Audit forms', 'entity_type' => 'form'],
 
-        Bouncer::allow('admin')->to('list', config('rinvex.forms.models.form_response'));
-        Bouncer::allow('admin')->to('import', config('rinvex.forms.models.form_response'));
-        Bouncer::allow('admin')->to('create', config('rinvex.forms.models.form_response'));
-        Bouncer::allow('admin')->to('update', config('rinvex.forms.models.form_response'));
-        Bouncer::allow('admin')->to('delete', config('rinvex.forms.models.form_response'));
-        Bouncer::allow('admin')->to('audit', config('rinvex.forms.models.form_response'));
+            ['name' => 'list', 'title' => 'List form response', 'entity_type' => 'form_response'],
+            ['name' => 'import', 'title' => 'Import form response', 'entity_type' => 'form_response'],
+            ['name' => 'create', 'title' => 'Create form response', 'entity_type' => 'form_response'],
+            ['name' => 'update', 'title' => 'Update form response', 'entity_type' => 'form_response'],
+            ['name' => 'delete', 'title' => 'Delete form response', 'entity_type' => 'form_response'],
+            ['name' => 'audit', 'title' => 'Audit form response', 'entity_type' => 'form_response'],
+        ];
+
+        collect($abilities)->each(function (array $ability) {
+            app('cortex.auth.ability')->create($ability);
+        });
     }
 }

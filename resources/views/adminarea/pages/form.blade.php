@@ -24,9 +24,7 @@
 {{-- Main Content --}}
 @section('content')
 
-    @if($form->exists)
-        @include('cortex/foundation::common.partials.modal', ['id' => 'delete-confirmation'])
-    @endif
+    @includeWhen($form->exists, 'cortex/foundation::common.partials.modal', ['id' => 'delete-confirmation'])
 
     @include('cortex/foundation::common.partials.modal', ['id' => 'formbuilder-preview'])
 
@@ -220,7 +218,7 @@
                                                     {{-- Description --}}
                                                     <div class="form-group{{ $errors->has('basics.description') ? ' has-error' : '' }}">
                                                         {{ Form::label('basics[description]', trans('cortex/forms::common.description'), ['class' => 'control-label']) }}
-                                                        {{ Form::textarea('basics[description]', null, ['class' => 'form-control', 'placeholder' => trans('cortex/forms::common.description'), 'rows' => 5]) }}
+                                                        {{ Form::textarea('basics[description]', null, ['class' => 'form-control tinymce', 'placeholder' => trans('cortex/forms::common.description'), 'rows' => 5]) }}
 
                                                         @if ($errors->has('basics.description'))
                                                             <span class="help-block">{{ $errors->first('basics.description') }}</span>
@@ -311,7 +309,7 @@
 
                                                     {{-- On Success Content --}}
                                                     <div class="form-group{{ $errors->has('submission.on_success.content') ? ' has-error' : '' }}">
-                                                        {{ Form::textarea('submission[on_success][content]', null, ['class' => 'form-control', 'placeholder' => trans('cortex/forms::common.content'), 'rows' => 5, 'required' => 'required']) }}
+                                                        {{ Form::textarea('submission[on_success][content]', null, ['class' => 'form-control tinymce', 'placeholder' => trans('cortex/forms::common.content'), 'rows' => 5, 'required' => 'required']) }}
 
                                                         @if ($errors->has('submission.on_success.content'))
                                                             <span class="help-block">{{ $errors->first('submission.on_success.content') }}</span>
@@ -324,7 +322,7 @@
 
                                                     {{-- On Failure Content --}}
                                                     <div class="form-group{{ $errors->has('submission.on_failure.content') ? ' has-error' : '' }}">
-                                                        {{ Form::textarea('submission[on_failure][content]', null, ['class' => 'form-control', 'placeholder' => trans('cortex/forms::common.content'), 'rows' => 5, 'required' => 'required']) }}
+                                                        {{ Form::textarea('submission[on_failure][content]', null, ['class' => 'form-control tinymce', 'placeholder' => trans('cortex/forms::common.content'), 'rows' => 5, 'required' => 'required']) }}
 
                                                         @if ($errors->has('submission.on_failure.content'))
                                                             <span class="help-block">{{ $errors->first('submission.on_failure.content') }}</span>

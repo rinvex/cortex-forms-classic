@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v2.0.0] - 2019-03-03
+- Require PHP 7.2 & Laravel 5.8
+- Rename environment variable QUEUE_DRIVER to QUEUE_CONNECTION
+- Simplify and flatten create & edit form controller actions
+- Enable tinymce on all description and text area fields
+- Utilize includeWhen blade directive
+- Refactor abilities seeding
+- Refactor managed roles/abilities retrieval
+- Fix wrong authorization check method for superadmins
+
 ## [v1.0.1] - 2018-12-22
 - Update composer dependencies
 - Add PHP 7.3 support to travis
@@ -18,5 +28,6 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 ## v0.0.1 - 2018-09-22
 - Commit first draft
 
+[v2.0.0]: https://github.com/rinvex/cortex-forms/compare/v1.0.1...v2.0.0
 [v1.0.1]: https://github.com/rinvex/cortex-forms/compare/v1.0.0...v1.0.1
 [v1.0.0]: https://github.com/rinvex/cortex-forms/compare/v0.0.1...v1.0.0
