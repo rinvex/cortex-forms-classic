@@ -174,11 +174,10 @@ class FormsController extends AuthorizedController
             'tags' => $form->tags,
         ];
 
-        $currentUser = $request->user($this->getGuard());
         $tags = app('rinvex.tags.tag')->pluck('name', 'id');
         $embedCode = htmlentities('<div data-embed-src="'.route('frontarea.forms.embed', ['form' => $form]).'"></div><script src="'.url(mix('js/embed.js')).'" defer></script>', ENT_COMPAT, 'UTF-8');
-        $abilities = get_area_abilities($currentUser);
-        $roles = get_area_roles($currentUser);
+        $abilities = $request->user($this->getGuard())->getManagedAbilities();
+        $roles = $request->user($this->getGuard())->getManagedRoles();
 
         return view('cortex/forms::adminarea.pages.form', compact('form', 'roles', 'abilities', 'tags', 'embedCode'));
     }
