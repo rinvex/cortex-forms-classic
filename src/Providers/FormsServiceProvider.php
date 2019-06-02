@@ -8,6 +8,7 @@ use Cortex\Forms\Models\Form;
 use Illuminate\Routing\Router;
 use Rinvex\Forms\Models\FormResponse;
 use Illuminate\Support\ServiceProvider;
+use Rinvex\Support\Traits\ConsoleTools;
 use Illuminate\View\Compilers\BladeCompiler;
 use Cortex\Forms\Console\Commands\SeedCommand;
 use Cortex\Forms\Console\Commands\InstallCommand;
@@ -18,6 +19,8 @@ use Illuminate\Database\Eloquent\Relations\Relation;
 
 class FormsServiceProvider extends ServiceProvider
 {
+    use ConsoleTools;
+
     /**
      * The commands to be registered.
      *
@@ -52,7 +55,7 @@ class FormsServiceProvider extends ServiceProvider
         || $this->app->alias('rinvex.forms.form_response', FormResponse::class);
 
         // Register console commands
-        ! $this->app->runningInConsole() || $this->registerCommands();
+        ! $this->app->runningInConsole() || $this->registersCommands();
     }
 
     /**
@@ -81,41 +84,15 @@ class FormsServiceProvider extends ServiceProvider
         $this->loadRoutesFrom(__DIR__.'/../../routes/web/frontarea.php');
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'cortex/forms');
         $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'cortex/forms');
-        ! $this->app->runningInConsole() || $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
         $this->app->runningInConsole() || $this->app->afterResolving('blade.compiler', function () {
             require __DIR__.'/../../routes/menus/adminarea.php';
         });
 
         // Publish Resources
-        ! $this->app->runningInConsole() || $this->publishResources();
-    }
-
-    /**
-     * Publish resources.
-     *
-     * @return void
-     */
-    protected function publishResources(): void
-    {
-        $this->publishes([realpath(__DIR__.'/../../config/config.php') => config_path('cortex.forms.php')], 'cortex-forms-config');
-        $this->publishes([realpath(__DIR__.'/../../database/migrations') => database_path('migrations')], 'cortex-forms-migrations');
-        $this->publishes([realpath(__DIR__.'/../../resources/lang') => resource_path('lang/vendor/cortex/forms')], 'cortex-forms-lang');
-        $this->publishes([realpath(__DIR__.'/../../resources/views') => resource_path('views/vendor/cortex/forms')], 'cortex-forms-views');
-    }
-
-    /**
-     * Register console commands.
-     *
-     * @return void
-     */
-    protected function registerCommands(): void
-    {
-        // Register artisan commands
-        foreach ($this->commands as $key => $value) {
-            $this->app->singleton($value, $key);
-        }
-
-        $this->commands(array_values($this->commands));
+        ! $this->app->runningInConsole() || $this->publishesLang('cortex/forms');
+        ! $this->app->runningInConsole() || $this->publishesViews('cortex/forms');
+        ! $this->app->runningInConsole() || $this->publishesConfig('cortex/forms');
+        ! $this->app->runningInConsole() || $this->publishesMigrations('cortex/forms');
     }
 
     /**
