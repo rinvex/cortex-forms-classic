@@ -89,10 +89,10 @@ class FormsServiceProvider extends ServiceProvider
         });
 
         // Publish Resources
-        ! $this->app->runningInConsole() || $this->publishesLang('cortex/forms');
-        ! $this->app->runningInConsole() || $this->publishesViews('cortex/forms');
-        ! $this->app->runningInConsole() || $this->publishesConfig('cortex/forms');
-        ! $this->app->runningInConsole() || $this->publishesMigrations('cortex/forms');
+        ! $this->app->runningInConsole() || $this->publishesLang('cortex/forms', true);
+        ! $this->app->runningInConsole() || $this->publishesViews('cortex/forms', true);
+        ! $this->app->runningInConsole() || $this->publishesConfig('cortex/forms', true);
+        ! $this->app->runningInConsole() || $this->publishesMigrations('cortex/forms', true);
     }
 
     /**
