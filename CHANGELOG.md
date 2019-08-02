@@ -5,6 +5,9 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v2.2.0] - 2019-08-03
+- Upgrade composer dependencies
+
 ## [v2.1.3] - 2019-06-03
 - Enforce latest composer package versions
 
@@ -42,6 +45,7 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 ## v0.0.1 - 2018-09-22
 - Commit first draft
 
+[v2.2.0]: https://github.com/rinvex/cortex-forms/compare/v2.1.1...v2.2.0
 [v2.1.1]: https://github.com/rinvex/cortex-forms/compare/v2.1.0...v2.1.1
 [v2.1.0]: https://github.com/rinvex/cortex-forms/compare/v2.0.0...v2.1.0
 [v2.0.0]: https://github.com/rinvex/cortex-forms/compare/v1.0.1...v2.0.0
