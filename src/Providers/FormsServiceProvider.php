@@ -67,8 +67,8 @@ class FormsServiceProvider extends ServiceProvider
     public function boot(Router $router, Dispatcher $dispatcher): void
     {
         // Bind route models and constrains
-        $router->pattern('form', '[a-zA-Z0-9-]+');
-        $router->pattern('form_response', '[a-zA-Z0-9-]+');
+        $router->pattern('form', '[a-zA-Z0-9-_]+');
+        $router->pattern('form_response', '[a-zA-Z0-9-_]+');
         $router->model('form', config('rinvex.forms.models.form'));
         $router->model('form_response', config('rinvex.forms.models.form_response'));
 
