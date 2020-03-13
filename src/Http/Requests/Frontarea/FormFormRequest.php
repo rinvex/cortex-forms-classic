@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Cortex\Forms\Http\Requests\Frontarea;
 
+use Illuminate\Support\Arr;
 use Rinvex\Support\Traits\Escaper;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -32,7 +33,7 @@ class FormFormRequest extends FormRequest
         $form = $this->route('form') ?? app('rinvex.forms.form');
 
         collect($form->content)->whereIn('type', ['text', 'select', 'textarea', 'checkbox-group', 'date', 'file', 'number', 'radio-group'])->each(function ($field) use (&$rules) {
-            $rules[$field['name']][] = array_get($field, 'required') ? 'required' : 'nullable';
+            $rules[$field['name']][] = Arr::get($field, 'required') ? 'required' : 'nullable';
             $field['type'] !== 'checkbox-group' || $rules[$field['name']][] = 'array';
             in_array($field['type'], ['checkbox-group', 'file']) || $rules[$field['name']][] = 'string';
             //$field['type'] !== 'file' || $rules[$field['name']][] = 'mimes:' . config('cortex.forms.allowed_mimes'); // @TODO: remove this rule as this already handled by spatie/medialibrary
