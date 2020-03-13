@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Cortex\Forms\Http\Controllers\Frontarea;
 
 use Exception;
+use Illuminate\Support\Arr;
 use Cortex\Forms\Models\Form;
 use GuzzleHttp\Client as HttpClient;
 use Illuminate\Support\Facades\Mail;
@@ -57,8 +58,8 @@ class FormsController extends AbstractController
                 }
             }
 
-            $action = array_get($form->submission, 'on_success.action');
-            $content = array_get($form->submission, 'on_success.content');
+            $action = Arr::get($form->submission, 'on_success.action');
+            $content = Arr::get($form->submission, 'on_success.content');
 
             switch ($action) {
                 case 'redirect_to':
@@ -76,8 +77,8 @@ class FormsController extends AbstractController
             }
         } catch (Exception $exception) {
             logger($exception->getMessage().' - '.$exception->getTraceAsString());
-            $action = array_get($form->submission, 'on_failure.action');
-            $content = array_get($form->submission, 'on_failure.content');
+            $action = Arr::get($form->submission, 'on_failure.action');
+            $content = Arr::get($form->submission, 'on_failure.content');
 
             switch ($action) {
                 case 'redirect_to':
@@ -111,9 +112,9 @@ class FormsController extends AbstractController
     {
         $data = $request->validated();
 
-        $to = explode(',', array_get($action, 'to', []));
-        $subject = array_get($action, 'subject', null);
-        $body = array_get($action, 'body', null);
+        $to = explode(',', Arr::get($action, 'to', []));
+        $subject = Arr::get($action, 'subject', null);
+        $body = Arr::get($action, 'body', null);
 
         if (empty($to) || empty($subject) || empty($body)) {
             throw new Exception(trans('cortex/forms::messages.invalid_parameters'));
@@ -141,9 +142,9 @@ class FormsController extends AbstractController
     {
         $data = $request->validated();
 
-        $method = mb_strtolower(array_get($action, 'method', null));
-        $endPoint = array_get($action, 'end_point', null);
-        $body = array_get($action, 'body', null);
+        $method = mb_strtolower(Arr::get($action, 'method', null));
+        $endPoint = Arr::get($action, 'end_point', null);
+        $body = Arr::get($action, 'body', null);
 
         if (empty($endPoint) || empty($method) || empty($body)) {
             throw new Exception(trans('cortex/forms::messages.invalid_parameters'));
@@ -179,8 +180,8 @@ class FormsController extends AbstractController
 
         $responseData = ['unique_identifier' => null];
 
-        if (! empty($uniqueField = array_get($action, 'unique_field'))) {
-            $uniqueFieldData = array_get($data, $uniqueField, null);
+        if (! empty($uniqueField = Arr::get($action, 'unique_field'))) {
+            $uniqueFieldData = Arr::get($data, $uniqueField, null);
             $uniqueResponse = $form->responses()->where('unique_identifier', $uniqueFieldData)->first();
 
             if (! $uniqueFieldData || $uniqueResponse) {

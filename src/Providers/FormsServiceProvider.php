@@ -46,6 +46,9 @@ class FormsServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        // Merge config
+        $this->mergeConfigFrom(realpath(__DIR__.'/../../config/config.php'), 'cortex.forms');
+
         $this->bindBladeCompiler();
 
         // Bind eloquent models to IoC container
@@ -90,10 +93,11 @@ class FormsServiceProvider extends ServiceProvider
         });
 
         // Publish Resources
-        ! $this->app->runningInConsole() || $this->publishesLang('cortex/forms', true);
-        ! $this->app->runningInConsole() || $this->publishesViews('cortex/forms', true);
-        ! $this->app->runningInConsole() || $this->publishesConfig('cortex/forms', true);
-        ! $this->app->runningInConsole() || $this->publishesMigrations('cortex/forms', true);
+        $this->publishesLang('cortex/forms', true);
+        $this->publishesViews('cortex/forms', true);
+        $this->publishesConfig('cortex/forms', true);
+        $this->publishesMigrations('cortex/forms', true);
+        ! $this->autoloadMigrations('cortex.forms') || $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
     }
 
     /**
