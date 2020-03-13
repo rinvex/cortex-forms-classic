@@ -30,7 +30,10 @@ class CortexFormsSeeder extends Seeder
         ];
 
         collect($abilities)->each(function (array $ability) {
-            app('cortex.auth.ability')->create($ability);
+            app('cortex.auth.ability')->firstOrCreate([
+                'name' => $ability['name'],
+                'entity_type' => $ability['entity_type'],
+            ], $ability);
         });
     }
 }
