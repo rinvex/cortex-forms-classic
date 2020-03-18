@@ -13,6 +13,12 @@ class FormTransformer extends TransformerAbstract
     use Escaper;
 
     /**
+     * Transform form model.
+     *
+     * @param \Cortex\Forms\Models\Form $form
+     *
+     * @throws \Exception
+     *
      * @return array
      */
     public function transform(Form $form): array
