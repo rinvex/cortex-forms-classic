@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Cortex\Forms\Models;
 
 use Rinvex\Tags\Traits\Taggable;
+use Spatie\MediaLibrary\HasMedia;
 use Cortex\Foundation\Traits\Auditable;
 use Rinvex\Support\Traits\HashidsTrait;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\Activitylog\Traits\LogsActivity;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Rinvex\Forms\Models\FormResponse as BaseFormResponse;
 
 /**
@@ -41,7 +41,7 @@ class FormResponse extends BaseFormResponse implements HasMedia
     use Auditable;
     use HashidsTrait;
     use LogsActivity;
-    use HasMediaTrait;
+    use InteractsWithMedia;
 
     /**
      * {@inheritdoc}
