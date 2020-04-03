@@ -86,6 +86,7 @@ class FormsServiceProvider extends ServiceProvider
         $this->loadRoutesFrom(__DIR__.'/../../routes/web/frontarea.php');
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'cortex/forms');
         $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'cortex/forms');
+        ! $this->autoloadMigrations('cortex/forms') || $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
 
         $this->app->runningInConsole() || $dispatcher->listen('accessarea.ready', function ($accessarea) {
             ! file_exists($menus = __DIR__."/../../routes/menus/{$accessarea}.php") || require $menus;
@@ -97,7 +98,6 @@ class FormsServiceProvider extends ServiceProvider
         $this->publishesViews('cortex/forms', true);
         $this->publishesConfig('cortex/forms', true);
         $this->publishesMigrations('cortex/forms', true);
-        ! $this->autoloadMigrations('cortex.forms') || $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
     }
 
     /**
