@@ -5,6 +5,7 @@ module.exports = {
     whitelistPatterns: [],
     webpackPlugins: [],
     install: ['formBuilder', 'pym.js'],
+    copy: [],
     mix: {
         css: [],
         js: [
