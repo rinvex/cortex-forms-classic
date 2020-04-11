@@ -59,7 +59,7 @@ class FormsServiceProvider extends ServiceProvider
         || $this->app->alias('rinvex.forms.form_response', FormResponse::class);
 
         // Register console commands
-        $this->registerCommands();
+        $this->registerCommands($this->commands);
     }
 
     /**
