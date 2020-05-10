@@ -86,10 +86,10 @@ class Form extends BaseForm
      */
     protected $rules = [
         'entity_id' => 'nullable|integer',
-        'entity_type' => 'nullable|string|max:150',
-        'slug' => 'required|string',
-        'name' => 'required|string|max:150',
-        'description' => 'nullable|string|max:10000',
+        'entity_type' => 'nullable|string|strip_tags|max:150',
+        'slug' => 'required|string|strip_tags|max:150',
+        'name' => 'required|string|strip_tags|max:150',
+        'description' => 'nullable|string|strip_tags|max:10000',
         'content' => 'required|array',
         'actions' => 'required|array',
         'submission' => 'required|array',
