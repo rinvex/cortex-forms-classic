@@ -41,9 +41,9 @@
                     <div class="pull-right">
                         <a href="#" data-toggle="modal" data-target="#delete-confirmation"
                            data-modal-action="{{ route('adminarea.forms.destroy', ['form' => $form]) }}"
-                           data-modal-title="{!! trans('cortex/foundation::messages.delete_confirmation_title') !!}"
+                           data-modal-title="{{ trans('cortex/foundation::messages.delete_confirmation_title') }}"
                            data-modal-button="<a href='#' class='btn btn-danger' data-form='delete' data-token='{{ csrf_token() }}'><i class='fa fa-trash-o'></i> {{ trans('cortex/foundation::common.delete') }}</a>"
-                           data-modal-body="{!! trans('cortex/foundation::messages.delete_confirmation_body', ['resource' => trans('cortex/forms::common.form'), 'identifier' => $form->full_name]) !!}"
+                           data-modal-body="{{ trans('cortex/foundation::messages.delete_confirmation_body', ['resource' => trans('cortex/forms::common.form'), 'identifier' => $form->full_name]) }}"
                            title="{{ trans('cortex/foundation::common.delete') }}" class="btn btn-default" style="margin: 4px"><i class="fa fa-trash text-danger"></i>
                         </a>
                     </div>
@@ -386,7 +386,7 @@
 
                                     <div class="pull-right">
                                         <a href="#" data-target="#formbuilder-preview" id="formbuilder-preview-button"
-                                           data-modal-title="{!! trans('cortex/forms::common.formbuilder_preview') !!}"
+                                           data-modal-title="{{ trans('cortex/forms::common.formbuilder_preview') }}"
                                            data-modal-body="<div class='formbuilder-render'></div>"
                                            title="{{ trans('cortex/forms::common.preview') }}" class="btn btn-info btn-flat" style="margin: 4px">{{ trans('cortex/forms::common.preview') }}
                                         </a>
