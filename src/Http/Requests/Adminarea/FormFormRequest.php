@@ -84,9 +84,9 @@ class FormFormRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'basics.slug' => 'required|string|strip_tags|max:150',
+            'basics.slug' => 'required|alpha_dash|max:150',
             'basics.name' => 'required|string|strip_tags|max:150',
-            'basics.description' => 'nullable|string|strip_tags|max:10000',
+            'basics.description' => 'nullable|string|max:10000',
             'basics.is_active' => 'sometimes|boolean',
             'basics.is_public' => 'sometimes|boolean',
             'basics.abilities' => 'nullable|array',
@@ -94,15 +94,15 @@ class FormFormRequest extends FormRequest
             'basics.tags' => 'nullable|array',
             'content' => 'required|array',
             'submission.on_success.action' => 'required|in:show_message,redirect_to',
-            'submission.on_success.content' => 'required|string|strip_tags|max:150',
+            'submission.on_success.content' => 'required|string|max:150',
             'submission.on_failure.action' => 'required|in:show_message,redirect_to',
-            'submission.on_failure.content' => 'required|string|strip_tags|max:150',
+            'submission.on_failure.content' => 'required|string|max:150',
             'actions.email.*.to' => 'sometimes|required|string|strip_tags|max:150',
             'actions.email.*.subject' => 'sometimes|required|string|strip_tags|max:150',
-            'actions.email.*.body' => 'sometimes|required|string|strip_tags|max:10000',
+            'actions.email.*.body' => 'sometimes|required|string|max:10000',
             'actions.api.*.method' => 'sometimes|required|string|strip_tags|max:150',
             'actions.api.*.end_point' => 'sometimes|required|string|strip_tags|max:1500',
-            'actions.api.*.body' => 'sometimes|required|string|strip_tags|max:10000',
+            'actions.api.*.body' => 'sometimes|required|string|max:10000',
             'actions.database.*.to' => 'sometimes|required|string|strip_tags|max:150',
         ];
     }
