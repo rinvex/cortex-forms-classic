@@ -13,10 +13,10 @@ Breadcrumbs::register('frontarea.forms.index', function (BreadcrumbsGenerator $b
 
 Breadcrumbs::register('frontarea.forms.show', function (BreadcrumbsGenerator $breadcrumbs, Form $form) {
     $breadcrumbs->parent('frontarea.forms.index');
-    $breadcrumbs->push($form->name, route('frontarea.forms.show', ['form' => $form]));
+    $breadcrumbs->push(strip_tags($form->name), route('frontarea.forms.show', ['form' => $form]));
 });
 
 Breadcrumbs::register('frontarea.forms.embed', function (BreadcrumbsGenerator $breadcrumbs, Form $form) {
     $breadcrumbs->parent('frontarea.forms.index');
-    $breadcrumbs->push($form->name, route('frontarea.forms.embed', ['form' => $form]));
+    $breadcrumbs->push(strip_tags($form->name), route('frontarea.forms.embed', ['form' => $form]));
 });
