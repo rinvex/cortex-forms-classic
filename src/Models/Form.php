@@ -9,8 +9,8 @@ use Rinvex\Tenants\Traits\Tenantable;
 use Cortex\Foundation\Traits\Auditable;
 use Rinvex\Support\Traits\HashidsTrait;
 use Rinvex\Forms\Models\Form as BaseForm;
-use Spatie\Activitylog\Traits\LogsActivity;
 use Cortex\Foundation\Events\CrudPerformed;
+use Spatie\Activitylog\Traits\LogsActivity;
 use Silber\Bouncer\Database\HasRolesAndAbilities;
 use Cortex\Foundation\Traits\FiresCustomModelEvent;
 
