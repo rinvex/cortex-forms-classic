@@ -10,6 +10,8 @@ use Cortex\Foundation\Traits\Auditable;
 use Rinvex\Support\Traits\HashidsTrait;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Cortex\Foundation\Events\CrudPerformed;
+use Cortex\Foundation\Traits\FiresCustomModelEvent;
 use Rinvex\Forms\Models\FormResponse as BaseFormResponse;
 
 /**
@@ -42,6 +44,7 @@ class FormResponse extends BaseFormResponse implements HasMedia
     use HashidsTrait;
     use LogsActivity;
     use InteractsWithMedia;
+    use FiresCustomModelEvent;
 
     /**
      * {@inheritdoc}
@@ -53,6 +56,18 @@ class FormResponse extends BaseFormResponse implements HasMedia
         'user_id',
         'user_type',
         'tags',
+    ];
+
+    /**
+     * The event map for the model.
+     *
+     * @var array
+     */
+    protected $dispatchesEvents = [
+        'created' => CrudPerformed::class,
+        'deleted' => CrudPerformed::class,
+        'restored' => CrudPerformed::class,
+        'updated' => CrudPerformed::class,
     ];
 
     /**

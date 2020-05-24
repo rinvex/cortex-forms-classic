@@ -10,7 +10,9 @@ use Cortex\Foundation\Traits\Auditable;
 use Rinvex\Support\Traits\HashidsTrait;
 use Rinvex\Forms\Models\Form as BaseForm;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Cortex\Foundation\Events\CrudPerformed;
 use Silber\Bouncer\Database\HasRolesAndAbilities;
+use Cortex\Foundation\Traits\FiresCustomModelEvent;
 
 /**
  * Cortex\Forms\Models\Form.
@@ -59,6 +61,7 @@ class Form extends BaseForm
     use HashidsTrait;
     use LogsActivity;
     use HasRolesAndAbilities;
+    use FiresCustomModelEvent;
 
     /**
      * {@inheritdoc}
@@ -77,6 +80,18 @@ class Form extends BaseForm
         'abilities',
         'roles',
         'tags',
+    ];
+
+    /**
+     * The event map for the model.
+     *
+     * @var array
+     */
+    protected $dispatchesEvents = [
+        'created' => CrudPerformed::class,
+        'deleted' => CrudPerformed::class,
+        'restored' => CrudPerformed::class,
+        'updated' => CrudPerformed::class,
     ];
 
     /**
