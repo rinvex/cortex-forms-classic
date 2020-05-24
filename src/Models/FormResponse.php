@@ -8,9 +8,9 @@ use Rinvex\Tags\Traits\Taggable;
 use Spatie\MediaLibrary\HasMedia;
 use Cortex\Foundation\Traits\Auditable;
 use Rinvex\Support\Traits\HashidsTrait;
+use Cortex\Foundation\Events\CrudPerformed;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\MediaLibrary\InteractsWithMedia;
-use Cortex\Foundation\Events\CrudPerformed;
 use Cortex\Foundation\Traits\FiresCustomModelEvent;
 use Rinvex\Forms\Models\FormResponse as BaseFormResponse;
 
