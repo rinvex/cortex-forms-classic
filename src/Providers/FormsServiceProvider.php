@@ -82,8 +82,6 @@ class FormsServiceProvider extends ServiceProvider
         ]);
 
         // Load resources
-        $this->loadRoutesFrom(__DIR__.'/../../routes/web/adminarea.php');
-        $this->loadRoutesFrom(__DIR__.'/../../routes/web/frontarea.php');
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'cortex/forms');
         $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'cortex/forms');
         ! $this->autoloadMigrations('cortex/forms') || $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
