@@ -235,7 +235,7 @@ class FormsController extends AuthorizedController
 
         return intend([
             'url' => route('adminarea.forms.index'),
-            'with' => ['success' => trans('cortex/foundation::messages.resource_saved', ['resource' => trans('cortex/forms::common.form'), 'identifier' => strip_tags($form->slug)])],
+            'with' => ['success' => trans('cortex/foundation::messages.resource_saved', ['resource' => trans('cortex/forms::common.form'), 'identifier' => $form->slug])],
         ]);
     }
 
@@ -254,7 +254,7 @@ class FormsController extends AuthorizedController
 
         return intend([
             'url' => route('adminarea.forms.index'),
-            'with' => ['warning' => trans('cortex/foundation::messages.resource_deleted', ['resource' => trans('cortex/forms::common.form'), 'identifier' => strip_tags($form->slug)])],
+            'with' => ['warning' => trans('cortex/foundation::messages.resource_deleted', ['resource' => trans('cortex/forms::common.form'), 'identifier' => $form->slug])],
         ]);
     }
 }
