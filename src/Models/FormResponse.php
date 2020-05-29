@@ -8,14 +8,13 @@ use Rinvex\Tags\Traits\Taggable;
 use Spatie\MediaLibrary\HasMedia;
 use Cortex\Foundation\Traits\Auditable;
 use Rinvex\Support\Traits\HashidsTrait;
+use Cortex\Foundation\Events\ModelCreated;
+use Cortex\Foundation\Events\ModelDeleted;
+use Cortex\Foundation\Events\ModelUpdated;
+use Cortex\Foundation\Events\ModelRestored;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Cortex\Foundation\Traits\FiresCustomModelEvent;
-use Cortex\Foundation\Events\ModelDeleted;
-use Cortex\Foundation\Events\ModelCreated;
-use Cortex\Foundation\Events\ModelUpdated;
-use Cortex\Foundation\Events\ModelRestored;
-
 use Rinvex\Forms\Models\FormResponse as BaseFormResponse;
 
 /**

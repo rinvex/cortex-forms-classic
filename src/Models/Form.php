@@ -9,13 +9,13 @@ use Rinvex\Tenants\Traits\Tenantable;
 use Cortex\Foundation\Traits\Auditable;
 use Rinvex\Support\Traits\HashidsTrait;
 use Rinvex\Forms\Models\Form as BaseForm;
+use Cortex\Foundation\Events\ModelCreated;
+use Cortex\Foundation\Events\ModelDeleted;
+use Cortex\Foundation\Events\ModelUpdated;
+use Cortex\Foundation\Events\ModelRestored;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Silber\Bouncer\Database\HasRolesAndAbilities;
 use Cortex\Foundation\Traits\FiresCustomModelEvent;
-use Cortex\Foundation\Events\ModelDeleted;
-use Cortex\Foundation\Events\ModelCreated;
-use Cortex\Foundation\Events\ModelUpdated;
-use Cortex\Foundation\Events\ModelRestored;
 
 /**
  * Cortex\Forms\Models\Form.
