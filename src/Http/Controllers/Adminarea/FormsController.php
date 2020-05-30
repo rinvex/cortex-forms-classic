@@ -35,7 +35,7 @@ class FormsController extends AuthorizedController
     public function index(FormsDataTable $formsDataTable)
     {
         return $formsDataTable->with([
-            'id' => 'adminarea-forms-index-table',
+            'id' => 'adminarea-forms-index',
         ])->render('cortex/foundation::adminarea.pages.datatable-index');
     }
 
@@ -52,7 +52,7 @@ class FormsController extends AuthorizedController
         return $logsDataTable->with([
             'resource' => $form,
             'tabs' => 'adminarea.forms.tabs',
-            'id' => "adminarea-forms-{$form->getRouteKey()}-logs-table",
+            'id' => "adminarea-forms-{$form->getRouteKey()}-logs",
         ])->render('cortex/foundation::adminarea.pages.datatable-tab');
     }
 
@@ -69,7 +69,7 @@ class FormsController extends AuthorizedController
         return $formResponsesDataTable->with([
             'resource' => $form,
             'tabs' => 'adminarea.forms.tabs',
-            'id' => "adminarea-forms-{$form->getRouteKey()}-responses-table",
+            'id' => "adminarea-forms-{$form->getRouteKey()}-responses",
         ])->render('cortex/foundation::adminarea.pages.datatable-tab');
     }
 
@@ -87,7 +87,7 @@ class FormsController extends AuthorizedController
             'resource' => $form,
             'tabs' => 'adminarea.forms.tabs',
             'url' => route('adminarea.forms.stash'),
-            'id' => "adminarea-forms-{$form->getRouteKey()}-import-table",
+            'id' => "adminarea-forms-{$form->getRouteKey()}-import",
         ])->render('cortex/foundation::adminarea.pages.datatable-dropzone');
     }
 
@@ -149,7 +149,7 @@ class FormsController extends AuthorizedController
         return $importLogsDatatable->with([
             'resource' => trans('cortex/forms::common.form'),
             'tabs' => 'adminarea.forms.tabs',
-            'id' => 'adminarea-forms-import-logs-table',
+            'id' => 'adminarea-forms-import-logs',
         ])->render('cortex/foundation::adminarea.pages.datatable-tab');
     }
 
@@ -235,7 +235,7 @@ class FormsController extends AuthorizedController
 
         return intend([
             'url' => route('adminarea.forms.index'),
-            'with' => ['success' => trans('cortex/foundation::messages.resource_saved', ['resource' => trans('cortex/forms::common.form'), 'identifier' => $form->slug])],
+            'with' => ['success' => trans('cortex/foundation::messages.resource_saved', ['resource' => trans('cortex/forms::common.form'), 'identifier' => $form->getRouteKey()])],
         ]);
     }
 
@@ -254,7 +254,7 @@ class FormsController extends AuthorizedController
 
         return intend([
             'url' => route('adminarea.forms.index'),
-            'with' => ['warning' => trans('cortex/foundation::messages.resource_deleted', ['resource' => trans('cortex/forms::common.form'), 'identifier' => $form->slug])],
+            'with' => ['warning' => trans('cortex/foundation::messages.resource_deleted', ['resource' => trans('cortex/forms::common.form'), 'identifier' => $form->getRouteKey()])],
         ]);
     }
 }

@@ -32,6 +32,7 @@ class FormsDataTable extends AbstractDataTable
             : '"<a href=\""+routes.route(\'adminarea.forms.edit\', {form: full.id})+"\">"+data+"</a>"';
 
         return [
+            'id' => ['checkboxes' => '{"selectRow": true}', 'exportable' => false, 'printable' => false],
             'name' => ['title' => trans('cortex/forms::common.name'), 'render' => $link, 'responsivePriority' => 0],
             'slug' => ['title' => trans('cortex/forms::common.slug')],
             'is_active' => ['title' => trans('cortex/forms::common.is_active')],

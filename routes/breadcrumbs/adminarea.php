@@ -29,17 +29,17 @@ Breadcrumbs::register('adminarea.forms.create', function (BreadcrumbsGenerator $
 
 Breadcrumbs::register('adminarea.forms.edit', function (BreadcrumbsGenerator $breadcrumbs, Form $form) {
     $breadcrumbs->parent('adminarea.forms.index');
-    $breadcrumbs->push($form->name, route('adminarea.forms.edit', ['form' => $form]));
+    $breadcrumbs->push(strip_tags($form->name), route('adminarea.forms.edit', ['form' => $form]));
 });
 
 Breadcrumbs::register('adminarea.forms.logs', function (BreadcrumbsGenerator $breadcrumbs, Form $form) {
     $breadcrumbs->parent('adminarea.forms.index');
-    $breadcrumbs->push($form->name, route('adminarea.forms.edit', ['form' => $form]));
+    $breadcrumbs->push(strip_tags($form->name), route('adminarea.forms.edit', ['form' => $form]));
     $breadcrumbs->push(trans('cortex/forms::common.logs'), route('adminarea.forms.logs', ['form' => $form]));
 });
 
 Breadcrumbs::register('adminarea.forms.responses', function (BreadcrumbsGenerator $breadcrumbs, Form $form) {
     $breadcrumbs->parent('adminarea.forms.index');
-    $breadcrumbs->push($form->name, route('adminarea.forms.edit', ['form' => $form]));
+    $breadcrumbs->push(strip_tags($form->name), route('adminarea.forms.edit', ['form' => $form]));
     $breadcrumbs->push(trans('cortex/forms::common.responses'), route('adminarea.forms.responses', ['form' => $form]));
 });

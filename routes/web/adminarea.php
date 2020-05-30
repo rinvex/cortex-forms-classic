@@ -10,7 +10,7 @@ Route::domain(domain())->group(function () {
 
         // Forms Routes
              Route::name('forms.')->prefix('forms')->group(function () {
-                 Route::get('/')->name('index')->uses('FormsController@index');
+                 Route::match(['get', 'post'], '/')->name('index')->uses('FormsController@index');
                  Route::get('import')->name('import')->uses('FormsController@import');
                  Route::post('import')->name('stash')->uses('FormsController@stash');
                  Route::post('hoard')->name('hoard')->uses('FormsController@hoard');

@@ -8,8 +8,13 @@ use Rinvex\Tags\Traits\Taggable;
 use Spatie\MediaLibrary\HasMedia;
 use Cortex\Foundation\Traits\Auditable;
 use Rinvex\Support\Traits\HashidsTrait;
+use Cortex\Foundation\Events\ModelCreated;
+use Cortex\Foundation\Events\ModelDeleted;
+use Cortex\Foundation\Events\ModelUpdated;
+use Cortex\Foundation\Events\ModelRestored;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Cortex\Foundation\Traits\FiresCustomModelEvent;
 use Rinvex\Forms\Models\FormResponse as BaseFormResponse;
 
 /**
@@ -42,6 +47,7 @@ class FormResponse extends BaseFormResponse implements HasMedia
     use HashidsTrait;
     use LogsActivity;
     use InteractsWithMedia;
+    use FiresCustomModelEvent;
 
     /**
      * {@inheritdoc}
@@ -53,6 +59,18 @@ class FormResponse extends BaseFormResponse implements HasMedia
         'user_id',
         'user_type',
         'tags',
+    ];
+
+    /**
+     * The event map for the model.
+     *
+     * @var array
+     */
+    protected $dispatchesEvents = [
+        'created' => ModelCreated::class,
+        'deleted' => ModelDeleted::class,
+        'restored' => ModelRestored::class,
+        'updated' => ModelUpdated::class,
     ];
 
     /**
@@ -91,11 +109,11 @@ class FormResponse extends BaseFormResponse implements HasMedia
 
         $this->setTable(config('rinvex.forms.tables.form_responses'));
         $this->setRules([
-            'unique_identifier' => 'nullable|string',
+            'unique_identifier' => 'nullable|string|strip_tags|max:150',
             'content' => 'required|array',
             'form_id' => 'required|integer|exists:'.config('rinvex.forms.tables.forms').',id',
             'user_id' => 'nullable|integer',
-            'user_type' => 'nullable|string',
+            'user_type' => 'nullable|string|strip_tags|max:150',
             'tags' => 'nullable|array',
         ]);
     }

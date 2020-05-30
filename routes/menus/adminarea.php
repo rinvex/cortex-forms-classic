@@ -8,7 +8,7 @@ use Cortex\Forms\Models\FormResponse;
 use Rinvex\Menus\Models\MenuGenerator;
 
 Menu::register('adminarea.sidebar', function (MenuGenerator $menu, Form $form) {
-    $menu->findByTitleOrAdd(trans('cortex/foundation::common.cms'), 40, 'fa fa-file-text-o', [], function (MenuItem $dropdown) use ($form) {
+    $menu->findByTitleOrAdd(trans('cortex/foundation::common.cms'), 40, 'fa fa-file-text-o', 'header', [], function (MenuItem $dropdown) use ($form) {
         $dropdown->route(['adminarea.forms.index'], trans('cortex/forms::common.forms'), 20, 'fa fa-wpforms')->ifCan('list', $form)->activateOnRoute('adminarea.forms');
     });
 });

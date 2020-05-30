@@ -25,7 +25,6 @@ class FormTransformer extends TransformerAbstract
     {
         return $this->escape([
             'id' => (string) $form->getRouteKey(),
-            'DT_RowId' => 'row_'.$form->getRouteKey(),
             'name' => (string) $form->name,
             'slug' => (string) $form->slug,
             'responses' => (int) $form->responses->count(),

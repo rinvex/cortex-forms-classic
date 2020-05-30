@@ -9,8 +9,13 @@ use Rinvex\Tenants\Traits\Tenantable;
 use Cortex\Foundation\Traits\Auditable;
 use Rinvex\Support\Traits\HashidsTrait;
 use Rinvex\Forms\Models\Form as BaseForm;
+use Cortex\Foundation\Events\ModelCreated;
+use Cortex\Foundation\Events\ModelDeleted;
+use Cortex\Foundation\Events\ModelUpdated;
+use Cortex\Foundation\Events\ModelRestored;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Silber\Bouncer\Database\HasRolesAndAbilities;
+use Cortex\Foundation\Traits\FiresCustomModelEvent;
 
 /**
  * Cortex\Forms\Models\Form.
@@ -59,6 +64,7 @@ class Form extends BaseForm
     use HashidsTrait;
     use LogsActivity;
     use HasRolesAndAbilities;
+    use FiresCustomModelEvent;
 
     /**
      * {@inheritdoc}
@@ -80,15 +86,27 @@ class Form extends BaseForm
     ];
 
     /**
+     * The event map for the model.
+     *
+     * @var array
+     */
+    protected $dispatchesEvents = [
+        'created' => ModelCreated::class,
+        'deleted' => ModelDeleted::class,
+        'restored' => ModelRestored::class,
+        'updated' => ModelUpdated::class,
+    ];
+
+    /**
      * The default rules that the model will validate against.
      *
      * @var array
      */
     protected $rules = [
         'entity_id' => 'nullable|integer',
-        'entity_type' => 'nullable|string|max:150',
-        'slug' => 'required|string',
-        'name' => 'required|string|max:150',
+        'entity_type' => 'nullable|string|strip_tags|max:150',
+        'slug' => 'required|alpha_dash|max:150',
+        'name' => 'required|string|strip_tags|max:150',
         'description' => 'nullable|string|max:10000',
         'content' => 'required|array',
         'actions' => 'required|array',
