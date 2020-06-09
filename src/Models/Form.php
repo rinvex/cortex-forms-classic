@@ -67,25 +67,6 @@ class Form extends BaseForm
     use FiresCustomModelEvent;
 
     /**
-     * {@inheritdoc}
-     */
-    protected $fillable = [
-        'entity_id',
-        'entity_type',
-        'slug',
-        'name',
-        'description',
-        'content',
-        'actions',
-        'submission',
-        'is_active',
-        'is_public',
-        'abilities',
-        'roles',
-        'tags',
-    ];
-
-    /**
      * The event map for the model.
      *
      * @var array
@@ -95,25 +76,6 @@ class Form extends BaseForm
         'deleted' => ModelDeleted::class,
         'restored' => ModelRestored::class,
         'updated' => ModelUpdated::class,
-    ];
-
-    /**
-     * The default rules that the model will validate against.
-     *
-     * @var array
-     */
-    protected $rules = [
-        'entity_id' => 'nullable|integer',
-        'entity_type' => 'nullable|string|strip_tags|max:150',
-        'slug' => 'required|alpha_dash|max:150',
-        'name' => 'required|string|strip_tags|max:150',
-        'description' => 'nullable|string|max:10000',
-        'content' => 'required|array',
-        'actions' => 'required|array',
-        'submission' => 'required|array',
-        'is_active' => 'sometimes|boolean',
-        'is_public' => 'sometimes|boolean',
-        'tags' => 'nullable|array',
     ];
 
     /**
@@ -140,6 +102,22 @@ class Form extends BaseForm
         'updated_at',
         'deleted_at',
     ];
+
+    /**
+     * Create a new Eloquent model instance.
+     *
+     * @param array $attributes
+     */
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+
+        $this->mergeFillable(['abilities', 'roles', 'tags']);
+
+        $this->mergeCasts(['abilities' => 'array', 'roles' => 'array', 'tags' => 'array']);
+
+        $this->mergeRules(['tags' => 'nullable|array']);
+    }
 
     /**
      * Attach the given abilities to the model.
