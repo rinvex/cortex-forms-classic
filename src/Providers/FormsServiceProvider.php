@@ -46,9 +46,6 @@ class FormsServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        // Merge config
-        $this->mergeConfigFrom(realpath(__DIR__.'/../../config/config.php'), 'cortex.forms');
-
         $this->bindBladeCompiler();
 
         // Bind eloquent models to IoC container
@@ -80,22 +77,6 @@ class FormsServiceProvider extends ServiceProvider
             'form' => config('rinvex.forms.models.form'),
             'form_response' => config('rinvex.forms.models.form_response'),
         ]);
-
-        // Load resources
-        $this->loadViewsFrom(__DIR__.'/../../resources/views', 'cortex/forms');
-        $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'cortex/forms');
-        ! $this->autoloadMigrations('cortex/forms') || $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
-
-        $this->app->runningInConsole() || $dispatcher->listen('accessarea.ready', function ($accessarea) {
-            ! file_exists($menus = __DIR__."/../../routes/menus/{$accessarea}.php") || require $menus;
-            ! file_exists($breadcrumbs = __DIR__."/../../routes/breadcrumbs/{$accessarea}.php") || require $breadcrumbs;
-        });
-
-        // Publish Resources
-        $this->publishesLang('cortex/forms', true);
-        $this->publishesViews('cortex/forms', true);
-        $this->publishesConfig('cortex/forms', true);
-        $this->publishesMigrations('cortex/forms', true);
     }
 
     /**

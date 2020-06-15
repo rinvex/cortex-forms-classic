@@ -50,18 +50,6 @@ class FormResponse extends BaseFormResponse implements HasMedia
     use FiresCustomModelEvent;
 
     /**
-     * {@inheritdoc}
-     */
-    protected $fillable = [
-        'unique_identifier',
-        'content',
-        'form_id',
-        'user_id',
-        'user_type',
-        'tags',
-    ];
-
-    /**
      * The event map for the model.
      *
      * @var array
@@ -107,15 +95,13 @@ class FormResponse extends BaseFormResponse implements HasMedia
     {
         parent::__construct($attributes);
 
+        $this->mergeFillable(['tags']);
+
+        $this->mergeCasts(['tags' => 'array']);
+
+        $this->mergeRules(['tags' => 'nullable|array']);
+
         $this->setTable(config('rinvex.forms.tables.form_responses'));
-        $this->setRules([
-            'unique_identifier' => 'nullable|string|strip_tags|max:150',
-            'content' => 'required|array',
-            'form_id' => 'required|integer|exists:'.config('rinvex.forms.tables.forms').',id',
-            'user_id' => 'nullable|integer',
-            'user_type' => 'nullable|string|strip_tags|max:150',
-            'tags' => 'nullable|array',
-        ]);
     }
 
     /**
