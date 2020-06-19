@@ -114,8 +114,6 @@ class Form extends BaseForm
 
         $this->mergeFillable(['abilities', 'roles', 'tags']);
 
-        $this->mergeCasts(['abilities' => 'array', 'roles' => 'array', 'tags' => 'array']);
-
         $this->mergeRules(['tags' => 'nullable|array']);
     }
 
