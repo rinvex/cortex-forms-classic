@@ -86,7 +86,7 @@ class FormFormRequest extends FormRequest
         return [
             'basics.slug' => 'required|alpha_dash|max:150',
             'basics.name' => 'required|string|strip_tags|max:150',
-            'basics.description' => 'nullable|string|max:10000',
+            'basics.description' => 'nullable|string|max:32768',
             'basics.is_active' => 'sometimes|boolean',
             'basics.is_public' => 'sometimes|boolean',
             'basics.abilities' => 'nullable|array',
@@ -99,10 +99,10 @@ class FormFormRequest extends FormRequest
             'submission.on_failure.content' => 'required|string|max:150',
             'actions.email.*.to' => 'sometimes|required|string|strip_tags|max:150',
             'actions.email.*.subject' => 'sometimes|required|string|strip_tags|max:150',
-            'actions.email.*.body' => 'sometimes|required|string|max:10000',
+            'actions.email.*.body' => 'sometimes|required|string|max:32768',
             'actions.api.*.method' => 'sometimes|required|string|strip_tags|max:150',
             'actions.api.*.end_point' => 'sometimes|required|string|strip_tags|max:1500',
-            'actions.api.*.body' => 'sometimes|required|string|max:10000',
+            'actions.api.*.body' => 'sometimes|required|string|max:32768',
             'actions.database.*.to' => 'sometimes|required|string|strip_tags|max:150',
         ];
     }
