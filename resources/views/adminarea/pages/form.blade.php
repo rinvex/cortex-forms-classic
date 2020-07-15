@@ -37,7 +37,7 @@
         <section class="content">
 
             <div class="nav-tabs-custom">
-                @if($form->exists && $currentUser->can('delete', $form))
+                @if($form->exists && app('request.user')->can('delete', $form))
                     <div class="pull-right">
                         <a href="#" data-toggle="modal" data-target="#delete-confirmation"
                            data-modal-action="{{ route('adminarea.forms.destroy', ['form' => $form]) }}"
