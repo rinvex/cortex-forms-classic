@@ -8,6 +8,7 @@ use Rinvex\Tags\Traits\Taggable;
 use Rinvex\Tenants\Traits\Tenantable;
 use Cortex\Foundation\Traits\Auditable;
 use Rinvex\Support\Traits\HashidsTrait;
+use Rinvex\Support\Traits\HasTimezones;
 use Rinvex\Forms\Models\Form as BaseForm;
 use Cortex\Foundation\Events\ModelCreated;
 use Cortex\Foundation\Events\ModelDeleted;
@@ -62,6 +63,7 @@ class Form extends BaseForm
     use Auditable;
     use Tenantable;
     use HashidsTrait;
+    use HasTimezones;
     use LogsActivity;
     use HasRolesAndAbilities;
     use FiresCustomModelEvent;
