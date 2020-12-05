@@ -10,13 +10,8 @@ use Cortex\Foundation\Traits\Auditable;
 use Rinvex\Support\Traits\HashidsTrait;
 use Rinvex\Support\Traits\HasTimezones;
 use Rinvex\Forms\Models\Form as BaseForm;
-use Cortex\Foundation\Events\ModelCreated;
-use Cortex\Foundation\Events\ModelDeleted;
-use Cortex\Foundation\Events\ModelUpdated;
-use Cortex\Foundation\Events\ModelRestored;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Silber\Bouncer\Database\HasRolesAndAbilities;
-use Cortex\Foundation\Traits\FiresCustomModelEvent;
 
 /**
  * Cortex\Forms\Models\Form.
@@ -66,19 +61,6 @@ class Form extends BaseForm
     use HasTimezones;
     use LogsActivity;
     use HasRolesAndAbilities;
-    use FiresCustomModelEvent;
-
-    /**
-     * The event map for the model.
-     *
-     * @var array
-     */
-    protected $dispatchesEvents = [
-        'created' => ModelCreated::class,
-        'deleted' => ModelDeleted::class,
-        'restored' => ModelRestored::class,
-        'updated' => ModelUpdated::class,
-    ];
 
     /**
      * Indicates whether to log only dirty attributes or all.
