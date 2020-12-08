@@ -9,7 +9,7 @@ Route::domain(domain())->group(function () {
          ->prefix(config('cortex.foundation.route.locale_prefix') ? '{locale}/'.config('cortex.foundation.route.prefix.frontarea') : config('cortex.foundation.route.prefix.frontarea'))->group(function () {
 
         // Forms Routes
-             Route::name('forms.')->prefix('forms')->group(function () {
+             Route::name('cortex.forms.forms.')->prefix('forms')->group(function () {
                  Route::get('/')->name('index')->uses('FormsController@index');
                  Route::get('{form}')->name('show')->uses('FormsController@show');
                  Route::post('{form}')->name('show.respond')->uses('FormsController@respond');

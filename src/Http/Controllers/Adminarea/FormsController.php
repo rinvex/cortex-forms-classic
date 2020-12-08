@@ -35,7 +35,7 @@ class FormsController extends AuthorizedController
     public function index(FormsDataTable $formsDataTable)
     {
         return $formsDataTable->with([
-            'id' => 'adminarea-forms-index',
+            'id' => 'adminarea-cortex-forms-forms-index',
         ])->render('cortex/foundation::adminarea.pages.datatable-index');
     }
 
@@ -51,8 +51,8 @@ class FormsController extends AuthorizedController
     {
         return $logsDataTable->with([
             'resource' => $form,
-            'tabs' => 'adminarea.forms.tabs',
-            'id' => "adminarea-forms-{$form->getRouteKey()}-logs",
+            'tabs' => 'adminarea.cortex.forms.forms.tabs',
+            'id' => "adminarea-cortex-forms-forms-{$form->getRouteKey()}-logs",
         ])->render('cortex/foundation::adminarea.pages.datatable-tab');
     }
 
@@ -68,8 +68,8 @@ class FormsController extends AuthorizedController
     {
         return $formResponsesDataTable->with([
             'resource' => $form,
-            'tabs' => 'adminarea.forms.tabs',
-            'id' => "adminarea-forms-{$form->getRouteKey()}-responses",
+            'tabs' => 'adminarea.cortex.forms.forms.tabs',
+            'id' => "adminarea-cortex-forms-forms-{$form->getRouteKey()}-responses",
         ])->render('cortex/foundation::adminarea.pages.datatable-tab');
     }
 
@@ -85,9 +85,9 @@ class FormsController extends AuthorizedController
     {
         return $importRecordsDataTable->with([
             'resource' => $form,
-            'tabs' => 'adminarea.forms.tabs',
-            'url' => route('adminarea.forms.stash'),
-            'id' => "adminarea-forms-{$form->getRouteKey()}-import",
+            'tabs' => 'adminarea.cortex.forms.forms.tabs',
+            'url' => route('adminarea.cortex.forms.forms.stash'),
+            'id' => "adminarea-cortex-forms-forms-{$form->getRouteKey()}-import",
         ])->render('cortex/foundation::adminarea.pages.datatable-dropzone');
     }
 
@@ -148,8 +148,8 @@ class FormsController extends AuthorizedController
     {
         return $importLogsDatatable->with([
             'resource' => trans('cortex/forms::common.form'),
-            'tabs' => 'adminarea.forms.tabs',
-            'id' => 'adminarea-forms-import-logs',
+            'tabs' => 'adminarea.cortex.forms.forms.tabs',
+            'id' => 'adminarea-cortex-forms-forms-import-logs',
         ])->render('cortex/foundation::adminarea.pages.datatable-tab');
     }
 
@@ -201,7 +201,7 @@ class FormsController extends AuthorizedController
         ];
 
         $tags = app('rinvex.tags.tag')->pluck('name', 'id');
-        $embedCode = htmlentities('<div data-embed-src="'.route('frontarea.forms.embed', ['form' => $form]).'"></div><script src="'.url(mix('js/embed.js')).'" defer></script>', ENT_COMPAT, 'UTF-8');
+        $embedCode = htmlentities('<div data-embed-src="'.route('frontarea.cortex.forms.forms.embed', ['form' => $form]).'"></div><script src="'.url(mix('js/embed.js')).'" defer></script>', ENT_COMPAT, 'UTF-8');
         $abilities = $request->user(app('request.guard'))->getManagedAbilities();
         $roles = $request->user(app('request.guard'))->getManagedRoles();
 
@@ -260,7 +260,7 @@ class FormsController extends AuthorizedController
         $form->fill($data)->save();
 
         return intend([
-            'url' => route('adminarea.forms.index'),
+            'url' => route('adminarea.cortex.forms.forms.index'),
             'with' => ['success' => trans('cortex/foundation::messages.resource_saved', ['resource' => trans('cortex/forms::common.form'), 'identifier' => $form->getRouteKey()])],
         ]);
     }
@@ -279,7 +279,7 @@ class FormsController extends AuthorizedController
         $form->delete();
 
         return intend([
-            'url' => route('adminarea.forms.index'),
+            'url' => route('adminarea.cortex.forms.forms.index'),
             'with' => ['warning' => trans('cortex/foundation::messages.resource_deleted', ['resource' => trans('cortex/forms::common.form'), 'identifier' => $form->getRouteKey()])],
         ]);
     }

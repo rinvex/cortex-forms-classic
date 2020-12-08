@@ -15,7 +15,7 @@
 @endpush
 
 @push('inline-scripts')
-    {!! JsValidator::formRequest(Cortex\Forms\Http\Requests\Adminarea\FormFormRequest::class)->selector("#adminarea-forms-create-form, #adminarea-forms-{$form->getRouteKey()}-update-form")->ignore('.skip-validation') !!}
+    {!! JsValidator::formRequest(Cortex\Forms\Http\Requests\Adminarea\FormFormRequest::class)->selector("#adminarea-cortex-forms-forms-create-form, #adminarea-cortex-forms-forms-{$form->getRouteKey()}-update-form")->ignore('.skip-validation') !!}
 
     @include('cortex/forms::adminarea.partials.templates')
     @include('cortex/forms::adminarea.partials.builder')
@@ -40,7 +40,7 @@
                 @if($form->exists && app('request.user')->can('delete', $form))
                     <div class="pull-right">
                         <a href="#" data-toggle="modal" data-target="#delete-confirmation"
-                           data-modal-action="{{ route('adminarea.forms.destroy', ['form' => $form]) }}"
+                           data-modal-action="{{ route('adminarea.cortex.forms.forms.destroy', ['form' => $form]) }}"
                            data-modal-title="{{ trans('cortex/foundation::messages.delete_confirmation_title') }}"
                            data-modal-button="<a href='#' class='btn btn-danger' data-form='delete' data-token='{{ csrf_token() }}'><i class='fa fa-trash-o'></i> {{ trans('cortex/foundation::common.delete') }}</a>"
                            data-modal-body="{{ trans('cortex/foundation::messages.delete_confirmation_body', ['resource' => trans('cortex/forms::common.form'), 'identifier' => $form->getRouteKey()]) }}"
@@ -48,16 +48,16 @@
                         </a>
                     </div>
                 @endif
-                {!! Menu::render('adminarea.forms.tabs', 'nav-tab') !!}
+                {!! Menu::render('adminarea.cortex.forms.forms.tabs', 'nav-tab') !!}
 
                 <div class="tab-content">
 
                     <div class="tab-pane active" id="details-tab">
 
                         @if ($form->exists)
-                            {{ Form::model($form, ['url' => route('adminarea.forms.update', ['form' => $form]), 'method' => 'put', 'id' => "adminarea-forms-{$form->getRouteKey()}-update-form"]) }}
+                            {{ Form::model($form, ['url' => route('adminarea.cortex.forms.forms.update', ['form' => $form]), 'method' => 'put', 'id' => "adminarea-cortex-forms-forms-{$form->getRouteKey()}-update-form"]) }}
                         @else
-                            {{ Form::model($form, ['url' => route('adminarea.forms.store'), 'id' => 'adminarea-forms-create-form']) }}
+                            {{ Form::model($form, ['url' => route('adminarea.cortex.forms.forms.store'), 'id' => 'adminarea-cortex-forms-forms-create-form']) }}
                         @endif
 
                         {{ Form::hidden('content', '', ['class' => 'skip-validation']) }}
@@ -67,8 +67,8 @@
                                     <div class="col-md-12">
 
                                         <div class="form-group">
-                                            {{ Form::label("adminarea-forms-{$form->getRouteKey()}-embed-form", trans('cortex/forms::common.embed_form'), ['class' => 'control-label']) }}
-                                            {{ Form::text('basics[embed_form]', $embedCode, ['class' => 'form-control', 'placeholder' => trans('cortex/forms::common.embed_form'), 'id' => "adminarea-forms-{$form->getRouteKey()}-embed-form", 'readonly' => 'readonly']) }}
+                                            {{ Form::label("adminarea-cortex-forms-forms-{$form->getRouteKey()}-embed-form", trans('cortex/forms::common.embed_form'), ['class' => 'control-label']) }}
+                                            {{ Form::text('basics[embed_form]', $embedCode, ['class' => 'form-control', 'placeholder' => trans('cortex/forms::common.embed_form'), 'id' => "adminarea-cortex-forms-forms-{$form->getRouteKey()}-embed-form", 'readonly' => 'readonly']) }}
                                         </div>
 
                                     </div>
