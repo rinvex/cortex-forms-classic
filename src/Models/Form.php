@@ -5,6 +5,10 @@ declare(strict_types=1);
 namespace Cortex\Forms\Models;
 
 use Rinvex\Tags\Traits\Taggable;
+use Cortex\Forms\Events\FormCreated;
+use Cortex\Forms\Events\FormDeleted;
+use Cortex\Forms\Events\FormUpdated;
+use Cortex\Forms\Events\FormRestored;
 use Rinvex\Tenants\Traits\Tenantable;
 use Cortex\Foundation\Traits\Auditable;
 use Rinvex\Support\Traits\HashidsTrait;
@@ -61,6 +65,18 @@ class Form extends BaseForm
     use HasTimezones;
     use LogsActivity;
     use HasRolesAndAbilities;
+
+    /**
+     * The event map for the model.
+     *
+     * @var array
+     */
+    protected $dispatchesEvents = [
+        'created' => FormCreated::class,
+        'updated' => FormUpdated::class,
+        'deleted' => FormDeleted::class,
+        'restored' => FormRestored::class,
+    ];
 
     /**
      * Indicates whether to log only dirty attributes or all.
