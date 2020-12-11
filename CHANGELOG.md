@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v4.2.1] - 2020-12-11
+- Move custom eloquent model events to module layer from core package layer
+- Rename broadcast channels file to avoid accessarea naming
+- Rename routes, channels, menus, breadcrumbs, datatable & form IDs to follow same modular naming conventions
+- Move Eloquent Events to core package responsibility
+- Move Eloquent Events to core package responsibility
+- Type hint Authorizable user parameter
+- Enforce consistent datatables request object usage
+- Override datatable ajax method to adjust custom order column: 'name'
+- Refactor request params setup
+- Enforce controller API consistency
+- Activate module after installation
+- Utilize timezones
+- Use app('request.user') instead of $currentUser
+- Update validation rules
+- Update composer dependencies
+- Refactor route parameters to container service binding
+- Drop wrong relationship casting
+- Stick to composer version constraints recommendations and ease minimum required version of modules
+
 ## [v4.2.0] - 2020-06-15
 - Autoload config, views, language, menus, breadcrumbs, and migrations
   - This is now done automatically through cortex/foundation, so no need to manually wire it here anymore
@@ -139,6 +159,7 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 ## v0.0.1 - 2018-09-22
 - Commit first draft
 
+[v4.2.1]: https://github.com/rinvex/cortex-forms/compare/v4.2.0...v4.2.1
 [v4.2.0]: https://github.com/rinvex/cortex-forms/compare/v4.1.1...v4.2.0
 [v4.1.1]: https://github.com/rinvex/cortex-forms/compare/v4.1.0...v4.1.1
 [v4.1.0]: https://github.com/rinvex/cortex-forms/compare/v4.0.8...v4.1.0
