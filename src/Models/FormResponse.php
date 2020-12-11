@@ -8,13 +8,10 @@ use Rinvex\Tags\Traits\Taggable;
 use Spatie\MediaLibrary\HasMedia;
 use Cortex\Foundation\Traits\Auditable;
 use Rinvex\Support\Traits\HashidsTrait;
-use Cortex\Foundation\Events\ModelCreated;
-use Cortex\Foundation\Events\ModelDeleted;
-use Cortex\Foundation\Events\ModelUpdated;
-use Cortex\Foundation\Events\ModelRestored;
+use Rinvex\Support\Traits\HasTimezones;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\MediaLibrary\InteractsWithMedia;
-use Cortex\Foundation\Traits\FiresCustomModelEvent;
+
 use Rinvex\Forms\Models\FormResponse as BaseFormResponse;
 
 /**
@@ -45,21 +42,9 @@ class FormResponse extends BaseFormResponse implements HasMedia
     use Taggable;
     use Auditable;
     use HashidsTrait;
+    use HasTimezones;
     use LogsActivity;
     use InteractsWithMedia;
-    use FiresCustomModelEvent;
-
-    /**
-     * The event map for the model.
-     *
-     * @var array
-     */
-    protected $dispatchesEvents = [
-        'created' => ModelCreated::class,
-        'deleted' => ModelDeleted::class,
-        'restored' => ModelRestored::class,
-        'updated' => ModelUpdated::class,
-    ];
 
     /**
      * Indicates whether to log only dirty attributes or all.
@@ -96,8 +81,6 @@ class FormResponse extends BaseFormResponse implements HasMedia
         parent::__construct($attributes);
 
         $this->mergeFillable(['tags']);
-
-        $this->mergeCasts(['tags' => 'array']);
 
         $this->mergeRules(['tags' => 'nullable|array']);
 

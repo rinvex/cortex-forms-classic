@@ -5,17 +5,17 @@ declare(strict_types=1);
 namespace Cortex\Forms\Models;
 
 use Rinvex\Tags\Traits\Taggable;
+use Cortex\Forms\Events\FormCreated;
+use Cortex\Forms\Events\FormDeleted;
+use Cortex\Forms\Events\FormUpdated;
+use Cortex\Forms\Events\FormRestored;
 use Rinvex\Tenants\Traits\Tenantable;
 use Cortex\Foundation\Traits\Auditable;
 use Rinvex\Support\Traits\HashidsTrait;
+use Rinvex\Support\Traits\HasTimezones;
 use Rinvex\Forms\Models\Form as BaseForm;
-use Cortex\Foundation\Events\ModelCreated;
-use Cortex\Foundation\Events\ModelDeleted;
-use Cortex\Foundation\Events\ModelUpdated;
-use Cortex\Foundation\Events\ModelRestored;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Silber\Bouncer\Database\HasRolesAndAbilities;
-use Cortex\Foundation\Traits\FiresCustomModelEvent;
 
 /**
  * Cortex\Forms\Models\Form.
@@ -62,9 +62,9 @@ class Form extends BaseForm
     use Auditable;
     use Tenantable;
     use HashidsTrait;
+    use HasTimezones;
     use LogsActivity;
     use HasRolesAndAbilities;
-    use FiresCustomModelEvent;
 
     /**
      * The event map for the model.
@@ -72,10 +72,10 @@ class Form extends BaseForm
      * @var array
      */
     protected $dispatchesEvents = [
-        'created' => ModelCreated::class,
-        'deleted' => ModelDeleted::class,
-        'restored' => ModelRestored::class,
-        'updated' => ModelUpdated::class,
+        'created' => FormCreated::class,
+        'updated' => FormUpdated::class,
+        'deleted' => FormDeleted::class,
+        'restored' => FormRestored::class,
     ];
 
     /**
@@ -113,8 +113,6 @@ class Form extends BaseForm
         parent::__construct($attributes);
 
         $this->mergeFillable(['abilities', 'roles', 'tags']);
-
-        $this->mergeCasts(['abilities' => 'array', 'roles' => 'array', 'tags' => 'array']);
 
         $this->mergeRules(['tags' => 'nullable|array']);
     }
