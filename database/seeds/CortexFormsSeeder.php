@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Cortex\Forms\Database\Seeders;
+
 use Illuminate\Database\Seeder;
 
 class CortexFormsSeeder extends Seeder
