@@ -20,22 +20,22 @@ use Silber\Bouncer\Database\HasRolesAndAbilities;
 /**
  * Cortex\Forms\Models\Form.
  *
- * @property int                                                                             $id
- * @property int                                                                             $entity_id
- * @property string                                                                          $entity_type
- * @property string                                                                          $slug
- * @property string                                                                          $name
- * @property string                                                                          $description
- * @property array                                                                           $content
- * @property array                                                                           $actions
- * @property array                                                                           $submission
- * @property bool                                                                         $is_active
- * @property bool                                                                         $is_public
- * @property \Carbon\Carbon|null                                                             $created_at
- * @property \Carbon\Carbon|null                                                             $updated_at
- * @property \Carbon\Carbon|null                                                             $deleted_at
+ * @property int                 $id
+ * @property int                 $entity_id
+ * @property string              $entity_type
+ * @property string              $slug
+ * @property string              $name
+ * @property string              $description
+ * @property array               $content
+ * @property array               $actions
+ * @property array               $submission
+ * @property bool                $is_active
+ * @property bool                $is_public
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @property \Carbon\Carbon|null $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent                              $entity
- * @property \Illuminate\Database\Eloquent\Collection|\Cortex\Tenants\Models\Tenant[]        $tenants
+ * @property \Illuminate\Database\Eloquent\Collection|\Cortex\Tenants\Models\Tenant[] $tenants
  *
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Forms\Models\Form whereActions($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Forms\Models\Form whereContent($value)
