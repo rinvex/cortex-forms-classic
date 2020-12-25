@@ -11,21 +11,20 @@ use Rinvex\Support\Traits\HashidsTrait;
 use Rinvex\Support\Traits\HasTimezones;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\MediaLibrary\InteractsWithMedia;
-
 use Rinvex\Forms\Models\FormResponse as BaseFormResponse;
 
 /**
  * Cortex\Forms\Models\FormResponse.
  *
- * @property int                                                                             $id
- * @property string                                                                          $unique_identifier
- * @property array                                                                           $content
- * @property int                                                                             $form_id
- * @property int                                                                             $user_id
- * @property string                                                                          $user_type
- * @property \Carbon\Carbon|null                                                             $created_at
- * @property \Carbon\Carbon|null                                                             $updated_at
- * @property \Carbon\Carbon|null                                                             $deleted_at
+ * @property int                 $id
+ * @property string              $unique_identifier
+ * @property array               $content
+ * @property int                 $form_id
+ * @property int                 $user_id
+ * @property string              $user_type
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @property \Carbon\Carbon|null $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent                              $user
  *
  * @method static \Illuminate\Database\Eloquent\Builder|\Cortex\Forms\Models\FormResponse ofUser(\Illuminate\Database\Eloquent\Model $user)
