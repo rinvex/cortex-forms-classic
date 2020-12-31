@@ -35,6 +35,7 @@ class InstallCommand extends Command
         $this->call('cortex:migrate:forms', ['--force' => $this->option('force')]);
         $this->call('cortex:seed:forms');
 
-        $this->call('cortex:activate', ['--module' => 'cortex/forms']);
+        $this->call('cortex:autoload:forms', ['--force' => $this->option('force')]);
+        $this->call('cortex:activate:forms', ['--force' => $this->option('force')]);
     }
 }
