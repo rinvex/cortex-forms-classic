@@ -12,14 +12,10 @@ use Rinvex\Support\Traits\ConsoleTools;
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\View\Compilers\BladeCompiler;
 use Cortex\Forms\Console\Commands\SeedCommand;
-use Cortex\Forms\Console\Commands\UnloadCommand;
 use Cortex\Forms\Console\Commands\InstallCommand;
 use Cortex\Forms\Console\Commands\MigrateCommand;
 use Cortex\Forms\Console\Commands\PublishCommand;
 use Cortex\Forms\Console\Commands\RollbackCommand;
-use Cortex\Forms\Console\Commands\ActivateCommand;
-use Cortex\Forms\Console\Commands\AutoloadCommand;
-use Cortex\Forms\Console\Commands\DeactivateCommand;
 use Illuminate\Database\Eloquent\Relations\Relation;
 
 class FormsServiceProvider extends ServiceProvider
@@ -32,11 +28,6 @@ class FormsServiceProvider extends ServiceProvider
      * @var array
      */
     protected $commands = [
-        ActivateCommand::class => 'command.cortex.forms.activate',
-        DeactivateCommand::class => 'command.cortex.forms.deactivate',
-        AutoloadCommand::class => 'command.cortex.forms.autoload',
-        UnloadCommand::class => 'command.cortex.forms.unload',
-
         SeedCommand::class => 'command.cortex.forms.seed',
         InstallCommand::class => 'command.cortex.forms.install',
         MigrateCommand::class => 'command.cortex.forms.migrate',
