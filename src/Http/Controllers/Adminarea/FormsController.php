@@ -189,7 +189,7 @@ class FormsController extends AuthorizedController
      */
     protected function form(Request $request, Form $form)
     {
-        if(! $form->exists && $request->has('replicate') && $replicated = $form->resolveRouteBinding($request->get('replicate'))){
+        if (! $form->exists && $request->has('replicate') && $replicated = $form->resolveRouteBinding($request->get('replicate'))) {
             $form = $replicated->replicate();
         }
 
