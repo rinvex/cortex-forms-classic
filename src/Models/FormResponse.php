@@ -82,8 +82,6 @@ class FormResponse extends BaseFormResponse implements HasMedia
         $this->mergeFillable(['tags']);
 
         $this->mergeRules(['tags' => 'nullable|array']);
-
-        $this->setTable(config('rinvex.forms.tables.form_responses'));
     }
 
     /**
