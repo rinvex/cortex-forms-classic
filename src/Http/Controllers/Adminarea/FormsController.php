@@ -23,7 +23,7 @@ class FormsController extends AuthorizedController
     /**
      * {@inheritdoc}
      */
-    protected $resource = Form::class;
+    protected $resource = 'rinvex.forms.models.form';
 
     /**
      * List all forms.
