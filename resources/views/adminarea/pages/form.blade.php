@@ -383,7 +383,7 @@
                                         {{ Form::button(trans('cortex/forms::common.submit'), ['class' => 'btn btn-primary btn-flat', 'type' => 'submit', 'id' => 'formbuilder-submit-button']) }}
                                     </div>
 
-                                    @include('cortex/foundation::adminarea.partials.timestamps', ['model' => $form])
+                                    @include('cortex/foundation::common.partials.timestamps', ['model' => $form])
 
                                 </div>
 
