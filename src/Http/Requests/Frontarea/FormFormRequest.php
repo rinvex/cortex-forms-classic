@@ -6,7 +6,7 @@ namespace Cortex\Forms\Http\Requests\Frontarea;
 
 use Illuminate\Support\Arr;
 use Rinvex\Support\Traits\Escaper;
-use Illuminate\Foundation\Http\FormRequest;
+use Cortex\Foundation\Http\FormRequest;
 
 class FormFormRequest extends FormRequest
 {

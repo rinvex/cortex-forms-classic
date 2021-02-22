@@ -9,7 +9,7 @@ use Illuminate\Support\Arr;
 use Cortex\Forms\Models\Form;
 use GuzzleHttp\Client as HttpClient;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Foundation\Http\FormRequest;
+use Cortex\Foundation\Http\FormRequest;
 use Cortex\Forms\Http\Requests\Frontarea\FormFormRequest;
 use Cortex\Foundation\Http\Controllers\AbstractController;
 
@@ -100,7 +100,7 @@ class FormsController extends AbstractController
     /**
      * Handle email action.
      *
-     * @param \Illuminate\Foundation\Http\FormRequest $request
+     * @param \Cortex\Foundation\Http\FormRequest $request
      * @param \Cortex\Forms\Models\Form               $form
      * @param array                                   $action
      *
@@ -130,7 +130,7 @@ class FormsController extends AbstractController
     /**
      * Handle api action.
      *
-     * @param \Illuminate\Foundation\Http\FormRequest $request
+     * @param \Cortex\Foundation\Http\FormRequest $request
      * @param \Cortex\Forms\Models\Form               $form
      * @param array                                   $action
      *
@@ -166,7 +166,7 @@ class FormsController extends AbstractController
     /**
      * Handle database action.
      *
-     * @param \Illuminate\Foundation\Http\FormRequest $request
+     * @param \Cortex\Foundation\Http\FormRequest $request
      * @param \Cortex\Forms\Models\Form               $form
      * @param array                                   $action
      *

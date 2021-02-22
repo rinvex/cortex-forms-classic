@@ -7,7 +7,7 @@ namespace Cortex\Forms\Http\Controllers\Adminarea;
 use Exception;
 use Illuminate\Http\Request;
 use Cortex\Forms\Models\Form;
-use Illuminate\Foundation\Http\FormRequest;
+use Cortex\Foundation\Http\FormRequest;
 use Cortex\Foundation\DataTables\LogsDataTable;
 use Cortex\Foundation\Importers\DefaultImporter;
 use Cortex\Forms\DataTables\Adminarea\FormsDataTable;
@@ -241,7 +241,7 @@ class FormsController extends AuthorizedController
     /**
      * Process stored/updated form.
      *
-     * @param \Illuminate\Foundation\Http\FormRequest $request
+     * @param \Cortex\Foundation\Http\FormRequest $request
      * @param \Cortex\Forms\Models\Form               $form
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
