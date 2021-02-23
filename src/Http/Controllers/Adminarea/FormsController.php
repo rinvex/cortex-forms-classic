@@ -242,7 +242,7 @@ class FormsController extends AuthorizedController
      * Process stored/updated form.
      *
      * @param \Cortex\Foundation\Http\FormRequest $request
-     * @param \Cortex\Forms\Models\Form               $form
+     * @param \Cortex\Forms\Models\Form           $form
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */

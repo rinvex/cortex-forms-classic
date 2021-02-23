@@ -101,8 +101,8 @@ class FormsController extends AbstractController
      * Handle email action.
      *
      * @param \Cortex\Foundation\Http\FormRequest $request
-     * @param \Cortex\Forms\Models\Form               $form
-     * @param array                                   $action
+     * @param \Cortex\Forms\Models\Form           $form
+     * @param array                               $action
      *
      * @throws \Exception
      *
@@ -131,8 +131,8 @@ class FormsController extends AbstractController
      * Handle api action.
      *
      * @param \Cortex\Foundation\Http\FormRequest $request
-     * @param \Cortex\Forms\Models\Form               $form
-     * @param array                                   $action
+     * @param \Cortex\Forms\Models\Form           $form
+     * @param array                               $action
      *
      * @throws \Exception
      *
@@ -167,8 +167,8 @@ class FormsController extends AbstractController
      * Handle database action.
      *
      * @param \Cortex\Foundation\Http\FormRequest $request
-     * @param \Cortex\Forms\Models\Form               $form
-     * @param array                                   $action
+     * @param \Cortex\Forms\Models\Form           $form
+     * @param array                               $action
      *
      * @throws \Exception
      *
