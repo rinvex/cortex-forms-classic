@@ -11,29 +11,11 @@ use Illuminate\Support\ServiceProvider;
 use Rinvex\Support\Traits\ConsoleTools;
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\View\Compilers\BladeCompiler;
-use Cortex\Forms\Console\Commands\SeedCommand;
-use Cortex\Forms\Console\Commands\InstallCommand;
-use Cortex\Forms\Console\Commands\MigrateCommand;
-use Cortex\Forms\Console\Commands\PublishCommand;
-use Cortex\Forms\Console\Commands\RollbackCommand;
 use Illuminate\Database\Eloquent\Relations\Relation;
 
 class FormsServiceProvider extends ServiceProvider
 {
     use ConsoleTools;
-
-    /**
-     * The commands to be registered.
-     *
-     * @var array
-     */
-    protected $commands = [
-        SeedCommand::class => 'command.cortex.forms.seed',
-        InstallCommand::class => 'command.cortex.forms.install',
-        MigrateCommand::class => 'command.cortex.forms.migrate',
-        PublishCommand::class => 'command.cortex.forms.publish',
-        RollbackCommand::class => 'command.cortex.forms.rollback',
-    ];
 
     /**
      * Register any application services.
@@ -54,9 +36,6 @@ class FormsServiceProvider extends ServiceProvider
 
         $this->app['config']['rinvex.forms.models.form_response'] === FormResponse::class
         || $this->app->alias('rinvex.forms.form_response', FormResponse::class);
-
-        // Register console commands
-        $this->registerCommands($this->commands);
     }
 
     /**
