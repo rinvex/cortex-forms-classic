@@ -77,11 +77,11 @@ class FormResponse extends BaseFormResponse implements HasMedia
      */
     public function __construct(array $attributes = [])
     {
-        parent::__construct($attributes);
-
         $this->mergeFillable(['tags']);
 
         $this->mergeRules(['tags' => 'nullable|array']);
+
+        parent::__construct($attributes);
     }
 
     /**

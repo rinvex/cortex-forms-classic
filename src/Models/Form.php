@@ -110,10 +110,10 @@ class Form extends BaseForm
      */
     public function __construct(array $attributes = [])
     {
-        parent::__construct($attributes);
-
         $this->mergeFillable(['abilities', 'roles', 'tags']);
 
         $this->mergeRules(['tags' => 'nullable|array']);
+
+        parent::__construct($attributes);
     }
 }
