@@ -24,9 +24,9 @@
 {{-- Main Content --}}
 @section('content')
 
-    @includeWhen($form->exists, 'cortex/foundation::common.partials.modal', ['id' => 'delete-confirmation'])
+    @includeWhen($form->exists, 'cortex/foundation::adminarea.partials.modal', ['id' => 'delete-confirmation'])
 
-    @include('cortex/foundation::common.partials.modal', ['id' => 'formbuilder-preview'])
+    @include('cortex/foundation::adminarea.partials.modal', ['id' => 'formbuilder-preview'])
 
     <div class="content-wrapper">
         <section class="content-header">
@@ -37,7 +37,7 @@
         <section class="content">
 
             <div class="nav-tabs-custom">
-                @includeWhen($form->exists, 'cortex/foundation::common.partials.actions', ['name' => 'form', 'model' => $form, 'resource' => trans('cortex/forms::common.form'), 'routePrefix' => 'adminarea.cortex.forms.forms.'])
+                @includeWhen($form->exists, 'cortex/foundation::adminarea.partials.actions', ['name' => 'form', 'model' => $form, 'resource' => trans('cortex/forms::common.form'), 'routePrefix' => 'adminarea.cortex.forms.forms.'])
                 {!! Menu::render('adminarea.cortex.forms.forms.tabs', 'nav-tab') !!}
 
                 <div class="tab-content">
@@ -383,7 +383,7 @@
                                         {{ Form::button(trans('cortex/forms::common.submit'), ['class' => 'btn btn-primary btn-flat', 'type' => 'submit', 'id' => 'formbuilder-submit-button']) }}
                                     </div>
 
-                                    @include('cortex/foundation::common.partials.timestamps', ['model' => $form])
+                                    @include('cortex/foundation::adminarea.partials.timestamps', ['model' => $form])
 
                                 </div>
 

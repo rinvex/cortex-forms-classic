@@ -5,7 +5,7 @@
     <title>@yield('title', config('app.name'))</title>
 
     {{-- Meta Data --}}
-    @include('cortex/foundation::common.partials.meta')
+    @include('cortex/foundation::frontarea.partials.meta')
     <meta name="turbolinks-cache-control" content="no-cache">
     @stack('head-elements')
 
