@@ -20,7 +20,7 @@ Route::domain(domain())->group(function () {
                  Route::get('{form}')->name('show')->uses('FormsController@show');
                  Route::get('{form}/edit')->name('edit')->uses('FormsController@edit');
                  Route::put('{form}/edit')->name('update')->uses('FormsController@update');
-                 Route::get('{form}/logs')->name('logs')->uses('FormsController@logs');
+                 Route::match(['get', 'post'], '{form}/logs')->name('logs')->uses('FormsController@logs');
                  Route::get('{form}/responses')->name('responses')->uses('FormsController@responses');
                  Route::delete('{form}')->name('destroy')->uses('FormsController@destroy');
              });
