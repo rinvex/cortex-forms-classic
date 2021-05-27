@@ -1,5 +1,8 @@
 # Cortex Forms
 
+This package is NOT actively maintained! Want to jump in as a maintainer? Ping me [@omranic](https://twitter.com/omranic)
+
+
 **Cortex Forms** is a frontend layer for dynamic form builder for Laravel, it's like the missing gem, the possibilities of using it are endless! With flexible API and powerful features you can build almost every kind of complex form with ease.
 
 [![Packagist](https://img.shields.io/packagist/v/cortex/forms.svg?label=Packagist&style=flat-square)](https://packagist.org/packages/cortex/forms)
